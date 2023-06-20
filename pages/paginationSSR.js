@@ -1,17 +1,44 @@
 import { useQuery, dehydrate, QueryClient } from "react-query";
 import Pagination from "@material-ui/lab/Pagination";
+import { Button } from "@material-ui/core";
 import { useState } from "react";
 import { useRouter } from "next/router";
+import Search from "../components/Search";
+import Sort, { sortId, sortLocation, sortName, sortSpecies } from "../components/Sort";
+import Card from "../components/Card";
+import Layout from "../components/Layout";
+import Aside from "../components/Aside";
+import TopSearch from "../components/TopSearch";
 
-export default function paginationSSR(props) {
+export default function PaginationSSR(props) {
   const router = useRouter();
   const [page, setPage] = useState(parseInt(router.query.page) || 1);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [sort, setSort] = useState('name');
+  const [list, setList] = useState(props.list || []);
+
   const { data } = useQuery(
     ["characters", page],
     async () =>
       await fetch(
         `https://rickandmortyapi.com/api/character/?page=${page}`
-      ).then((result) => result.json()),
+      ).then((result) => result.json()).then(data => {
+        setList(data?.results?.filter(c => c.name.toUpperCase().indexOf(searchTerm)>-1).sort((a, b) => {
+          switch(sort) {
+            case 'name':
+              return sortName(a,b); 
+              break;
+            case 'location':
+              return sortLocation(a,b); // a.location.name > b.location.name;
+              break;
+            case 'species':
+              return sortSpecies(a,b); // a.species > b.species;
+              break;
+            default:
+              return sortId(a,b); // a.id < b.id = -1 | b.id > a.id = 1 | a.id === b.id = 0;
+          }
+        }))
+      }),
     {
       keepPreviousData: true,
       refetchOnMount: false,
@@ -22,52 +49,50 @@ export default function paginationSSR(props) {
     setPage(value);
     router.push(`paginationSSR/?page=${value}`, undefined, { shallow: true });
   }
-  return (
+  function handleChange(e) {
+    setSearchTerm(e.target.value.toUpperCase());
+  }
+  function handleSort(e){
+    setSort(e.target.value);
+  }
+  function handleReverse(e) {
+    setList(list.reverse());
+  }
+
+  return (<Layout search={<TopSearch handleChange={handleChange}/>} aside={<><Aside />
+  <div className='grid-container'>
+  <Search handleChange={handleChange} />
+</div>
+<div className='grid-container'>
+  <Sort handleChange={handleSort} value={sort} />
+</div>
+<Button onClick={handleReverse}>Reverse</Button></>} pagination={<Pagination
+    count={data?.info.pages}
+    variant='outlined'
+    color='primary'
+    className='pagination'
+    page={page}
+    onChange={handlePaginationChange}
+  />}>
     <div>
       <h1>
         Rick and Morty with React Query and Pagination - Server Side rendered
       </h1>
-      <Pagination
-        count={data?.info.pages}
-        variant='outlined'
-        color='primary'
-        className='pagination'
-        page={page}
-        onChange={handlePaginationChange}
-      />
+      <div className="result-box">
+
       <div className='grid-container'>
-        {data?.results?.map((character) => (
-          <article key={character.id}>
-            <img
-              src={character.image}
-              alt={character.name}
-              height={250}
-              loading='lazy'
-              width={"100%"}
-            />
-            <div className='text'>
-              <p>Name: {character.name}</p>
-              <p>Lives in: {character.location.name}</p>
-              <p>Species: {character.species}</p>
-              <i>Id: {character.id} </i>
-            </div>
-          </article>
+        {list?.map((character) => (
+          <Card key={character.id} character={character} />
         ))}
       </div>
-      <Pagination
-        count={data?.info.pages}
-        variant='outlined'
-        color='primary'
-        className='pagination'
-        page={page}
-        onChange={handlePaginationChange}
-      />
-    </div>
+</div>
+    </div></Layout>
   );
 }
 
 export async function getServerSideProps(context) {
   let page = 1;
+  
   if (context.query.page) {
     page = parseInt(context.query.page);
   }
@@ -79,5 +104,5 @@ export async function getServerSideProps(context) {
         `https://rickandmortyapi.com/api/character/?page=${page}`
       ).then((result) => result.json())
   );
-  return { props: { dehydratedState: dehydrate(queryClient) } };
+  return { props: { list: [], dehydratedState: dehydrate(queryClient) } };
 }
