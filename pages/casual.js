@@ -24,7 +24,7 @@ function makeValue() {
 }
 function casualPage() {
   const [searchTerm, setSearchTerm] = useState('');
-  const [sort, setSort] =useState('name');
+  const [sort, setSort] = useState('name');
   const [models, setModels] = useState( []) 
   
   function handleChange(e) {
