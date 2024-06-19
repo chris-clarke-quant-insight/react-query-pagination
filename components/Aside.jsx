@@ -19,5 +19,6 @@ export default function Aside (props) {
           <ListButton href='/paginationSSR' variant="contained" title="Pagination Server Side" />
           <ListButton href='/infiniteCSR' variant="contained" color="secondary" title='Infinite Here' />
           <ListButton href='/casual' variant="contained" color="secondary" title='Casual' />
+          <ListButton href='/derp' variant="contained" color="secondary" title='Derp' />
         </ul>)
 }
