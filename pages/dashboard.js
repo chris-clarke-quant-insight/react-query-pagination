@@ -58,7 +58,6 @@ function Page(props) {
                     <div className="nx tj aiv cuq" aria-hidden="true">
                     </div>
                     <div className="ls uh aab acz czm">
-                        {JSON.stringify(data)}
                         <Dashboard />Dashboard
                     </div>
                 </div>
