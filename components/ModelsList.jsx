@@ -1,5 +1,5 @@
 import React from "react";
-import CharacterCard from "../components/CharacterCard";
+import CharacterCard from "./CharacterCard";
 
 
 export function ModelsList(props) {

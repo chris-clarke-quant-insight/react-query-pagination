@@ -7,7 +7,7 @@ import Timeline from "../components/Timeline";
 export async function getServerSideProps(ctx) {
     return {
         props: {
-            name: ctx.query.name
+            name: ctx.query.name ? ctx.query.name : "alice"
         }
     }
 }
@@ -15,7 +15,7 @@ export async function getServerSideProps(ctx) {
 
 function Page(props) {
     const [data, setData] = useState([]);
-    const { name = "alice" } = props;
+    const { name } = props;
   
     useEffect(() => {
       function fetchData() {
@@ -66,7 +66,11 @@ function Page(props) {
                     <div className="ard arm cer dcv ddh">
                         <div className="ab ov adb ads aeu afk afr baz">
                             <div>
-                                <Timeline items={data} />
+                                {data.length > 0 ? 
+                                    <Timeline items={data} />
+                                    :
+                                    <div>Loading...</div>
+                                }
                             </div>
                         </div>
                     </div>

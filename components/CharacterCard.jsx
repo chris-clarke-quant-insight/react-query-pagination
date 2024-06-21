@@ -7,8 +7,8 @@ const CharacterCard = ({character}) => {
       <Image
         src={character.url}
         alt={character.id}
-        height={250}
-        width={250}
+        height={600}
+        width={408}
         loading='lazy'
       />
       <div className={classes.text}>

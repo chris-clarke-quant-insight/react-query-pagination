@@ -1,14 +1,15 @@
-import Nav from "./Nav";
-import Logo from "./Logo";
-import { UserContext } from "./UserContext";
+import React from "react";
+import Nav from "../components/Nav";
+import Logo from "../components/Logo";
 
-export default function Layout(props) {
+function FullLayout(props) {
+    const { title, location } = props;
     return (
     <div className="alj">
         <div>
             <div className="ly cps cpz cqi crg cuk cwc daq dce dds">
                 <Logo />
-                <Nav location={props.location} />
+                <Nav location={location} />
             </div>
             <div className="dec">
                 <div className="ac di ee ls ng um yu aab afa afp alj ard bbi cbo cer dcv">
@@ -27,23 +28,24 @@ export default function Layout(props) {
                     </button>
                     <div className="nx tj aiv cuq" aria-hidden="true">
                     </div>
-                    <UserContext props={props} />
+                    <div className="ls uh aab acz czm">
+                        {title}
+                    </div>
                 </div>
-                <main className="dmo">
+            
+                <main className="">
                     <div className="ard arm cer dcv ddh">
                         <div className="ab ov adb ads aeu afk afr baz">
-                            {props.children}
+                            <div>
+                                {props.children}
+                            </div>
                         </div>
                     </div>
-                    
-                <div>{props.pagination}</div>
                 </main>
             </div>
-            <aside className="z bx ci dm ly sh ade aff afp ard arz cer dcv dij">
-                <div className="ab ov adb ads aeu afk afr baz">
-                    {props.aside}
-                </div>
-            </aside>
         </div>
-    </div>);
+    </div>
+    );
 }
+
+export default FullLayout;

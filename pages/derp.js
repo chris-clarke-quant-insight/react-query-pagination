@@ -5,14 +5,14 @@ import Layout from "../components/Layout";
 import Sort from "../components/Sort";
 import Search from "../components/Search";
 import TopSearch from "../components/TopSearch";
-import { ModelsList } from "./ModelsList";
-import { makeValue } from "./makeValue";
-import { makeUrl } from "./makeUrl";
-import { makeID } from "./makeID";
+import { ModelsList } from "../components/ModelsList";
+import { makeValue } from "../utils/makeValue";
+import { makeUrl } from "../utils/makeUrl";
+import { makeID } from "../utils/makeID";
 
 function derpPage() {
   const [searchTerm, setSearchTerm] = useState('');
-  const [name, setName] = useState("alice"); // For paginated data
+  const [name, setName] = useState("alice");
   const [sort, setSort] = useState('name');
   const [models, setModels] = useState([]);
   const [data, setData] = useState({});
@@ -59,7 +59,10 @@ function derpPage() {
   function handleListChange (ev) {
     setSaveList(JSON.parse(ev.target.value));
   }
-  return (<Layout search={<TopSearch handleChange={handleChange}/>}  aside={<><Aside />
+  return (<Layout
+    location="team"
+    search={<TopSearch handleChange={handleChange}/>}
+    aside={<><Aside />
     <div className='grid-container'>
       <Search handleChange={handleChange} />
     </div>
