@@ -3,7 +3,7 @@ import Image from "next/image";
 import classes from "../styles/Card.module.css";
 
 const CharacterCard = ({character}) => {
-    return <article key={character.id} className={classes[character.id]}>
+    return <article key={character.id} className={`${classes[character.id]} bzj`}>
       <Image
         src={character.url}
         alt={character.id}

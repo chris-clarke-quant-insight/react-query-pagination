@@ -10,7 +10,13 @@ export default async function handler(req, res) {
 
   switch (method) {
     case 'GET':
-        res.status(200).json(records);
+      const search = req.query.s;
+      const results = [];
+      results.push(records.find((record) => record.id.toUpperCase().includes(search.toUpperCase())));
+      if(search !== '' && results.length > 0) {
+        return res.status(200).json(results);
+      }
+      res.status(200).json(records);
       break;
     case 'POST':
       // Create a new record

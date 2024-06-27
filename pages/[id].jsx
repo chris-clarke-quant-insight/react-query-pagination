@@ -39,7 +39,7 @@ function Page (props) {
                 url: props.url,
                 id: props.id
             }} />
-            <a href="/derp">Back to derp page</a>
+            <a href={`/dashboard?name=${props.id}`}>Dashboard</a>
         </>
     }>
         <h1>Test ID: {props.id}</h1>

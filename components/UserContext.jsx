@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { TopSearch } from "./TopSearch.1";
+import TopSearch from "./TopSearch";
 
 export const UserContext = (props) => {
     return (

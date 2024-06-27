@@ -3,7 +3,7 @@ import Nav from "../components/Nav";
 import Logo from "../components/Logo";
 
 function FullLayout(props) {
-    const { title, location } = props;
+    const { title, location, search = (<></>) } = props;
     return (
     <div className="alj">
         <div>
@@ -29,7 +29,7 @@ function FullLayout(props) {
                     <div className="nx tj aiv cuq" aria-hidden="true">
                     </div>
                     <div className="ls uh aab acz czm">
-                        {title}
+                        {search}<h1>{title}</h1>
                     </div>
                 </div>
             
@@ -41,6 +41,7 @@ function FullLayout(props) {
                             </div>
                         </div>
                     </div>
+                    <div>{props.results}</div>
                 </main>
             </div>
         </div>

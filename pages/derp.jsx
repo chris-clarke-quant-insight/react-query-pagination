@@ -9,6 +9,7 @@ import { ModelsList } from "../components/ModelsList";
 import { makeValue } from "../utils/makeValue";
 import { makeUrl } from "../utils/makeUrl";
 import { makeID } from "../utils/makeID";
+import { makeSenses } from "../utils/makeSenses";
 
 function derpPage() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -17,6 +18,7 @@ function derpPage() {
   const [models, setModels] = useState([]);
   const [data, setData] = useState({});
   const [saveList, setSaveList] = useState();
+  const [senses, setSenses] = useState(makeSenses());
 
   useEffect(() => {
     function fetchData() {
@@ -59,6 +61,9 @@ function derpPage() {
   function handleListChange (ev) {
     setSaveList(JSON.parse(ev.target.value));
   }
+  function handleSenses() {
+    setSenses(makeSenses());
+  }
   return (<Layout
     location="team"
     search={<TopSearch handleChange={handleChange}/>}
@@ -76,7 +81,8 @@ function derpPage() {
         <Button onClick={handleClear}>Clear Models</Button>
         <Button onClick={handleSaveList}>Save Models List</Button>
         <Button onClick={handleLoadList}>Load Models List</Button>
-
+        <Button onClick={handleSenses}>Change senses</Button>
+        <pre>{JSON.stringify(senses)}</pre>
         <div>Name: {name}</div>
         <div>This is the derp section which is used for experiments</div>
           <input

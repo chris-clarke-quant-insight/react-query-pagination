@@ -66,6 +66,7 @@ function Page(props) {
                     <div className="ard arm cer dcv ddh">
                         <div className="ab ov adb ads aeu afk afr baz">
                             <div>
+                                <h1>Timeline for {name}</h1>
                                 {data.length > 0 ? 
                                     <Timeline items={data} />
                                     :
