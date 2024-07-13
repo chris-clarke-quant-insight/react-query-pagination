@@ -86,6 +86,6 @@ export function makeModifier(currentHealth, changes) {
     return health; 
 }
 
-export function checkDead(currentHealth) {
+export function checkDead(currentHealth) { // FIXME: this doesn't work as expected
     return Object.values(currentHealth).includes(1.0) || Object.values(currentHealth).includes(0.0)
 }

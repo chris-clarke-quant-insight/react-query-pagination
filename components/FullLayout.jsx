@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import Nav from "../components/Nav";
 import Logo from "../components/Logo";
+import Modal from "./Modal";
 
 function FullLayout(props) {
-    const { title, location, search = (<></>) } = props;
+    const { title, location, search = (<></>), shown = false } = props;
+    const [open, setOpen] = useState(shown);
+
     return (
     <div className="alj">
         <div>
@@ -34,6 +37,10 @@ function FullLayout(props) {
                 </div>
             
                 <main className="">
+                    <div className="cxb">
+                        {open? 'Open' : 'Sesame'}
+                    <Modal shown={false} setShown={() => setOpen(!open)}  />
+                    </div>
                     <div className="ard arm cer dcv ddh">
                         <div className="ab ov adb ads aeu afk afr baz">
                             <div>

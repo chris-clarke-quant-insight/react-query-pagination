@@ -1,8 +1,12 @@
+import { useState } from "react";
 import Nav from "./Nav";
 import Logo from "./Logo";
 import { UserContext } from "./UserContext";
+import Modal from "./Modal";
 
 export default function Layout(props) {
+    const { shown = false } = props;
+    const [open, setOpen] = useState(shown);
     return (
     <div className="alj">
         <div>
@@ -27,9 +31,14 @@ export default function Layout(props) {
                     </button>
                     <div className="nx tj aiv cuq" aria-hidden="true">
                     </div>
-                    <UserContext props={props} />
+                    <UserContext props={props} setOPen={setOpen} />
                 </div>
                 <main className="dmo">
+                    <div className="cxb">
+                        {open? 'Open' : 'Sesame'}
+                        <Modal shown={open} setShown={() => setOpen(!open)} />
+                    </div>
+
                     <div className="ard arm cer dcv ddh">
                         <div className="ab ov adb ads aeu afk afr baz">
                             {props.children}
