@@ -25,6 +25,22 @@ const records = [
             content: 'Alice two',
             createdAt: 'today',
             updatedAt: 'now'
+        }, 
+        {
+            id: '72138521863586',
+            title: 'alice three',
+            type: 'link', 
+            content: 'https://www.youtube.com/watch?v=jnctWuP_a6A',
+            createdAt: 'today',
+            updatedAt: 'now'
+        },
+        {
+            id: '11212123123123',
+            title: 'alice four',
+            type: 'image', 
+            content: 'https://i.ytimg.com/vi/U6wmE5dRsIw/maxresdefault.jpg',
+            createdAt: 'today',
+            updatedAt: 'now'
         }
         ]
     },
