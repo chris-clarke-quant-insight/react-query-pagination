@@ -1,12 +1,17 @@
-import { Layout, AddEdit } from 'components/users';
+import React from "react";
+import FullLayout from "../../components/FullLayout";
+import { AddEdit } from '../../components/users';
 
-export default Add;
-
-function Add() {
+function Page(props) {
     return (
-        <Layout>
-            <h1>Add User</h1>
+    <FullLayout title="Add user" location="team">
+        <h1>Add User</h1>
+
+        <div className="result-box">
             <AddEdit />
-        </Layout>
+        </div>
+    </FullLayout>
     );
 }
+
+export default Page;

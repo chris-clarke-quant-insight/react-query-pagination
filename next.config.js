@@ -3,4 +3,7 @@ module.exports = {
   images: {
     domains: ['tailwindui.com', "images.unsplash.com", "rickandmortyapi.com"]
   },
+  publicRuntimeConfig: { 
+    apiUrl: 'api'
+  },
 }
