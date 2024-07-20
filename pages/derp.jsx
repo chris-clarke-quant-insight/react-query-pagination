@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "@material-ui/core";
+
 import Aside from "../components/Aside";
 import Layout from "../components/Layout";
 import Sort from "../components/Sort";
 import Search from "../components/Search";
 import TopSearch from "../components/TopSearch";
-import { ModelsList } from "../components/ModelsList";
+import DerpModelsList from "../components/DerpModelsList";
+import User from "../components/User";
+
 import { makeValue } from "../utils/makeValue";
 import { makeUrl } from "../utils/makeUrl";
 import { makeID } from "../utils/makeID";
@@ -43,7 +46,7 @@ function derpPage() {
     setSort(ev.target.value);
   }
   function handleClick(){
-    setModels([...models, {id: makeID(), value: makeValue(), url: makeUrl()}])
+    setModels([...models, {id: makeID(), value: makeValue(), url: makeUrl(), senses: makeSenses()}])
   }
   function handleChange(ev) {
     setName(ev.target.value);
@@ -90,19 +93,12 @@ function derpPage() {
           type="text" defaultValue={JSON.stringify(saveList)} />
           <div>Name: <input onChange={handleChange} /></div>
           <div>Data: {JSON.stringify(data)}
-          {data.user_id > 0 ? (<>
-          <div>id: {data.user_id}</div>
-              <div>username: {data.username}</div>
-              <div>email: {data.email}</div>
-              <div>password_hash: {data.password_hash}</div>
-              <div>created_at: {data.created_at}</div>
-              <div>updated_at: {data.updated_at}</div>
-            </>)
+          {data.user_id > 0 ? <User user={data} />
             :
             ''}
           </div>
           <div className="result-box">
-            <ModelsList models={models} />
+            <DerpModelsList models={models} />
           </div>
         </div>
     </Layout>
