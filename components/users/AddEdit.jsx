@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 import { Link } from '../Link';
 import { userService, alertService } from '../../services';
 import { useState } from 'react';
+import { Button } from '@material-ui/core';
 
 export { AddEdit };
 
@@ -101,24 +102,24 @@ function AddEdit(props) {
     return (
         <form onSubmit={handleSubmit}>
             <div className="form-row">
-                <div className="form-group col">
+                <div className="form-group aqi">
                     <label>First Name</label>
                     <input onChange={handleChangeFirstName} name="firstName" type="text" className={`form-control ${errors.firstName ? 'is-invalid' : ''}`} />
                     <div className="invalid-feedback">{errors.firstName?.message}</div>
                 </div>
-                <div className="form-group col">
+                <div className="form-group aqi">
                     <label>Last Name</label>
                     <input onChange={handleChangeLastName} name="lastName" type="text" className={`form-control ${errors.lastName ? 'is-invalid' : ''}`} />
                     <div className="invalid-feedback">{errors.lastName?.message}</div>
                 </div>
             </div>
             <div className="form-row">
-                <div className="form-group col">
+                <div className="form-group aqi">
                     <label>Username</label>
                     <input onChange={handleChangeUsername} name="username" type="text" className={`form-control ${errors.username ? 'is-invalid' : ''}`} />
                     <div className="invalid-feedback">{errors.email?.message}</div>
                 </div>
-                <div className="form-group col">
+                <div className="form-group aqi">
                     <label>
                         Password
                         {!isAddMode && <em className="ml-1">(Leave blank to keep the same password)</em>}
@@ -128,11 +129,13 @@ function AddEdit(props) {
                 </div>
             </div>
             <div className="form-group">
-                <button type="submit" disabled={isSubmitting} className="btn btn-primary mr-2">
+                <Button variant="contained" color="primary" type="submit" disabled={isSubmitting} className="btn btn-primary mr-2">
                     {isSubmitting && <span className="spinner-border spinner-border-sm mr-1"></span>}
                     Save
-                </button>
-                <button onClick={() => reset(formOptions.defaultValues)} type="button" disabled={isSubmitting} className="btn btn-secondary">Reset</button>
+                </Button>
+                <Button variant="contained" color="secondary" onClick={() => reset(formOptions.defaultValues)} type="button" disabled={isSubmitting} className="btn btn-secondary">
+                    Reset
+                </Button>
                 <Link href="/users" className="btn btn-link">Cancel</Link>
             </div>
         </form>

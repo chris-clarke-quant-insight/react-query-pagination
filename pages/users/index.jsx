@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 
 import { Link, Spinner } from '../../components';
-import { Layout } from '../../components/users';
+// import { Layout } from '../../components/users';
 import { userService } from '../../services';
+import FullLayout from '../../components/FullLayout';
 
 export default Index;
 
@@ -24,7 +25,7 @@ function Index() {
     }
 
     return (
-        <Layout>
+        <FullLayout title="Users" location="team">
             <h1>Users</h1>
             <Link href="/users/add" className="btn btn-sm btn-success mb-2">Add User</Link>
             <table className="table table-striped">
@@ -69,6 +70,6 @@ function Index() {
                     }
                 </tbody>
             </table>
-        </Layout>
+        </FullLayout>
     );
 }

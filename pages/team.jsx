@@ -2,7 +2,7 @@ import { useQuery } from "react-query";
 import { useRouter } from "next/router";
 import React, { useState, useEffect } from "react";
 import FullLayout from "../components/FullLayout";
-import { ModelsList } from "../components/ModelsList";
+import ModelsList from "../components/ModelsList";
 import TopSearch from "../components/TopSearch";
 
 export async function getServerSideProps(ctx) {
