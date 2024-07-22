@@ -30,7 +30,7 @@ export default function Layout(props) {
                         </svg>
                     </button>
                     <div className="nx tj aiv cuq" aria-hidden="true">
-                    </div>
+                    </div>{props.search}
                     <UserContext props={props} setOPen={setOpen} />
                 </div>
                 <main className="dmo">

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Nav from "../components/Nav";
 import Logo from "../components/Logo";
-import Dashboard from "../components/Dashboard";
+import { DashIcon } from "../components/icons/";
 import Timeline from "../components/Timeline";
 
 export async function getServerSideProps(ctx) {
@@ -58,7 +58,7 @@ function Page(props) {
                     <div className="nx tj aiv cuq" aria-hidden="true">
                     </div>
                     <div className="ls uh aab acz czm">
-                        <Dashboard />Dashboard
+                        <DashIcon /> Dashboard
                     </div>
                 </div>
             

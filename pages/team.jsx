@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import FullLayout from "../components/FullLayout";
 import ModelsList from "../components/ModelsList";
 import TopSearch from "../components/TopSearch";
+import { TeamIcon } from "../components/icons";
 
 export async function getServerSideProps(ctx) {
   return {
@@ -46,7 +47,7 @@ function Page(props) {
   const Loading = () => { return "Loading..." };
   function Loaded () {
     return  (<FullLayout
-      title={`Team : ${searchTerm}`}
+      title={<><TeamIcon />Team : {searchTerm}</>}
       location="team"
       search={<TopSearch value={searchTerm} handleChange={handleChange}/>}
       results={<div>{data && filteredData.length} / {data.length}</div>}
