@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Layout from "../components/Layout";
+import { LinkButton } from "../components/LinkButton";
 import CharacterCard from "../components/CharacterCard";
 
 export async function getServerSideProps(ctx) {
@@ -39,7 +40,7 @@ function Page (props) {
                 url: props.url,
                 id: props.id
             }} />
-            <a href={`/dashboard?name=${props.id}`}>Dashboard</a>
+            <LinkButton href={`/dashboard?name=${props.id}`} title="Dashboard" />
         </>
     }>
         <h1>Test ID: {props.id}</h1>

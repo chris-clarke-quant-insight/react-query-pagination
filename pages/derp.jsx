@@ -13,6 +13,7 @@ import { makeValue } from "../utils/makeValue";
 import { makeUrl } from "../utils/makeUrl";
 import { makeID } from "../utils/makeID";
 import { makeSenses } from "../utils/makeSenses";
+import { ListButton } from "../components/ListButton";
 
 function derpPage() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -80,11 +81,13 @@ function derpPage() {
       <div>
         <h1>Casual Card list of models{searchTerm ? ` for ${searchTerm}` : ''}
         </h1>
-        <Button onClick={handleClick}>Add Model</Button>
-        <Button onClick={handleClear}>Clear Models</Button>
-        <Button onClick={handleSaveList}>Save Models List</Button>
-        <Button onClick={handleLoadList}>Load Models List</Button>
-        <Button onClick={handleSenses}>Change senses</Button>
+        <ul className="grid-container">
+          <ListButton variant="contained" color="primary" onClick={handleClick} title="Add Model" />
+          <ListButton variant="contained" color="secondary" onClick={handleClear} title="Clear Models" />
+          <ListButton variant="contained" color="primary" onClick={handleSaveList} title="Save Models List" />
+          <ListButton variant="contained" color="secondary" onClick={handleLoadList} title="Load Models List" />
+          <ListButton variant="contained" color="primary" onClick={handleSenses} title="Change senses" />
+        </ul>
         <pre>{JSON.stringify(senses)}</pre>
         <div>Name: {name}</div>
         <div>This is the derp section which is used for experiments</div>
