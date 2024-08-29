@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useInfiniteQuery } from "react-query";
-import Aside from "../components/Aside";
-import Layout from "../components/Layout";
-import Card from "../components/Card";
-import Sort, { sortId, sortLocation, sortName, sortSpecies } from "../components/Sort";
-import Search from "../components/Search";
-import TopSearch from "../components/TopSearch";
+import Aside from "../../components/Aside";
+import Layout from "../../components/Layout";
+import Card from "../../components/Card";
+import Sort, { sortId, sortLocation, sortName, sortSpecies } from "../../components/Sort";
+import Search from "../../components/Search";
+import TopSearch from "../../components/TopSearch";
 
 function InfiniteCSRPage() {
   

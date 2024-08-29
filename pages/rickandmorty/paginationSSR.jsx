@@ -3,12 +3,12 @@ import Pagination from "@material-ui/lab/Pagination";
 import { Button } from "@material-ui/core";
 import { useState } from "react";
 import { useRouter } from "next/router";
-import Search from "../components/Search";
-import Sort, { sortId, sortLocation, sortName, sortSpecies } from "../components/Sort";
-import Card from "../components/Card";
-import Layout from "../components/Layout";
-import Aside from "../components/Aside";
-import TopSearch from "../components/TopSearch";
+import Search from "../../components/Search";
+import Sort, { sortId, sortLocation, sortName, sortSpecies } from "../../components/Sort";
+import Card from "../../components/Card";
+import Layout from "../../components/Layout";
+import Aside from "../../components/Aside";
+import TopSearch from "../../components/TopSearch";
 
 export default function PaginationSSR(props) {
   const router = useRouter();

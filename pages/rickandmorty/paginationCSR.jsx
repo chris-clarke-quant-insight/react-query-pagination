@@ -2,12 +2,12 @@ import { useQuery } from "react-query";
 import Pagination from "@material-ui/lab/Pagination";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import Layout from "../components/Layout";
-import Aside from "../components/Aside";
-import Card from "../components/Card";
-import Sort, { sortId, sortLocation, sortName, sortSpecies } from "../components/Sort";
-import Search from "../components/Search";
-import TopSearch from "../components/TopSearch";
+import Layout from "../../components/Layout";
+import Aside from "../../components/Aside";
+import Card from "../../components/Card";
+import Sort, { sortId, sortLocation, sortName, sortSpecies } from "../../components/Sort";
+import Search from "../../components/Search";
+import TopSearch from "../../components/TopSearch";
 
 export default function PaginationPage(props) {
   const router = useRouter();

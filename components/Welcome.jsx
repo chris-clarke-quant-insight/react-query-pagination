@@ -9,7 +9,7 @@ export default function Welcome (props) {
     <a href='https://dev.to/elisabethleonhardt/implementing-pagination-with-nextjs-mui-and-react-query-2ab'>
       Read the Article
     </a>
-    <Link href='/paginationCSR'>
+    <Link href='/rickandmorty/paginationCSR'>
       <a>See it working</a>
     </Link>{" "}
     <a href='https://github.com/elisabeth-leonhardt/react-query-pagination/tree/main/pages'>
@@ -17,7 +17,7 @@ export default function Welcome (props) {
     </a>
     <h2>Server side pagination:</h2>
     <a href='https://dev.to/elisabethleonhardt/'>Read the Article</a>
-    <Link href='/paginationSSR'>
+    <Link href='/rickandmorty/paginationSSR'>
       <a>See it working</a>
     </Link>{" "}
     <a href='https://github.com/elisabeth-leonhardt/react-query-pagination/tree/main/pages'>
@@ -27,7 +27,7 @@ export default function Welcome (props) {
     <a href='https://dev.to/elisabethleonhardt/easy-and-quick-infinite-scroll-with-nextjs-and-react-query-36lh'>
       Read the Article
     </a>
-    <Link href='/infiniteCSR'>
+    <Link href='/rickandmorty/infiniteCSR'>
       <a>See it working</a>
     </Link>{" "}
     <a href='https://github.com/elisabeth-leonhardt/react-query-pagination/tree/main/pages'>
